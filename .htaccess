@@ -1,0 +1,14 @@
+AddDefaultCharset UTF-8
+
+RewriteEngine on
+
+#Все запросы кроме тех, что начинаются с /static
+#Перенаправляем в index.php
+#Добавляем слеш в конец адреса
+#RewriteCond %{REQUEST_URI} !(.+)/$
+#RewriteRule ^(.*)$ /$1/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} !/static/
+#RewriteRule ^([a-zA-Z0-9\-\_\/\?]+)$ index.php/$1 [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^(.*)$ index.php/$1 [L]
